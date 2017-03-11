@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <base href="192.168.0.2">
+<!-- Load player theme -->
+    <link rel="stylesheet" href="Video_player/themes/maccaco/projekktor.style.css" type="text/css" media="screen" />
+
+    <!-- Load jquery -->
+    <script type="text/javascript" src="Video_player/jquery-1.9.1.min.js"></script>
+
+    <!-- load projekktor -->
+    <script type="text/javascript" src="Video_player/projekktor-1.3.09.min.js"></script>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="L'observateur planétaire autonome" content="">
+    <meta name="Manuel CARRILHO DE ALMEIDA" content="">
+
+    <title>PathFinder -+- l'automate</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                    <img src="img/Logo_Medium_alpha.png" style="display: inline-block;">
+                    <a class="navbar-brand" href="/user/user">
+                    
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Tableau de bord</a>
+                    </li>
+                    <li>
+                        <a href="#">Paramètrages</a>
+                    </li>
+                    <li>
+                        <a href="#">A propos</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <iframe type="text/html" 
+        width="1280" 
+        height="720" 
+        src="http://192.168.0.2:8080/?action=stream"
+        frameborder="0">
+    </iframe>
+             
+            <button type="button" id="Rotation_more" class="btn btn-default">Lateral Rot. +</button>
+                     <!-- Standard button -->
+            <button type="button" id="Rotation_less" class="btn btn-default">Lateral Rot. -</button>
+                     <!-- Standard button -->
+            <button type="button" id="right" class="btn btn-default">Right</button>
+                     <!-- Standard button -->
+            <button type="button" id="left" class="btn btn-default">Left</button>
+  
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        
+        $("#Rotation_more").click(function(){
+            $.post("../../motors/rotation_lat_more", function(response) {
+                console.log(response)
+            });
+        })
+        
+        $("#Rotation_less").click(function(){
+            $.post("../../motors/rotation_lat_less", function(response) {
+                console.log(response)
+            });
+        })
+        
+        $("#left").click(function(){
+            $.post("../../motors/left", function(response) {
+                console.log(response)
+            });
+        })
+        
+        $("#right").click(function(){
+            $.post("../../motors/right", function(response) {
+                console.log(response)
+            });
+        })
+    </script>
+
+    
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
